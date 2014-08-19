@@ -21,7 +21,7 @@ param (
 #echo $config_file
 #
 
-# | Get-UcsOrg -Name "HCA" -LimitScope |
+# | Get-UcsOrg -Name "example.com" -LimitScope |
 
 # Get JSON data
 $json = Get-Content $config_file | Out-String | ConvertFrom-Json
