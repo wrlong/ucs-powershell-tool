@@ -1,37 +1,37 @@
 {
     "template": {
-        "name": "SSESXc1_spt",
-        "org": "HCA",
+        "name": "ESX50_spt",
+        "org": "example.com",
         "policies": {
             "bios": {
                 "name": "bios_def"
             },
             "boot": {
                 "type": "BFS",
-                "name": "SSESXc1_BFS",
+                "name": "ESX50_BFS",
                 "paths": {
                     "vhba_primary": {
-                        "name": "SSESXc1_fc0a",
-                        "target_primary": "50:00:09:73:F0:14:FD:40",
-                        "target_secondary": "50:00:09:73:F0:14:FD:80"
+                        "name": "ESX50_fc0a",
+                        "target_primary": "50:00:09:73:F0:14:FD:C0",
+                        "target_secondary": "50:00:09:73:F0:14:FD:08"
                     },
                     "vhba_secondary": {
-                        "name": "SSESXc1_fc1b",
-                        "target_primary": "50:00:09:73:F0:14:FD:8C",
-                        "target_secondary": "50:00:09:73:F0:14:FD:4C"
+                        "name": "ESX50_fc1b",
+                        "target_primary": "50:00:09:73:F0:14:FD:CC",
+                        "target_secondary": "50:00:09:73:F0:14:FD:04"
                     }
                 }
             },
             "firmware": {
-                "name": "SSESXc1_fw_pkg"
+                "name": "ESX50_fw_pkg"
             },
             "local_disk_config": "default",
             "maintenance": {
-                "name": "SSESXc1_mnt_pol"
+                "name": "ESX50_mnt_pol"
             },
             "power_ctrl": "default",
             "server_pool_qual": {
-                "name": "SSESXc1_svr_qp",
+                "name": "ESX50_svr_qp",
                 "range": {
                     "chassis": "1,2,3,4",
                     "slots": "1,2"
@@ -40,85 +40,85 @@
         },
         "pools": {
             "server": {
-                "name": "SSESXc1_svr_pl",
+                "name": "ESX50_svr_pl",
                 "range": {
                     "chassis": "3",
                     "slots": "1,2,3,4"
                 }
             },
             "uuid": {
-                "name": "SSESXc1_uuid_pl",
-                "range": "0000-0025B5002001=0000-0025B50020FF"
+                "name": "ESX50_uuid_pl",
+                "range": "0000-0025B5000005=0000-0025B5000008"
             },
             "wwnn": {
-                "name": "SSESXc1_wwnn_pl",
-                "range": "20:00:00:25:B5:00:20:01-20:00:00:25:B5:00:20:FF"
+                "name": "ESX50_wwnn_pl",
+                "range": "20:00:00:25:B5:00:00:05-20:00:00:25:B5:00:00:08"
             }
         },
         "service_profiles": {
             "instances": "4",
-            "prefix": "SS-ESX-c1-"
+            "prefix": "MT-ESX50-c1-"
         },
         "templates": {
             "vhba": {
-                "SSESXc1_fc0a": {
+                "ESX50_fc0a": {
                     "switch_id": "A",
                     "template_type": "updating-template",
                     "vsans": [
                         "VSAN106"
                     ],
                     "wwpnpool": {
-                        "name": "SSESXc1_wwpn_A",
-                        "range": "20:00:00:25:B5:00:2A:01-20:00:00:25:B5:00:2A:FF"
+                        "name": "ESX50_wwpn_A",
+                        "range": "20:00:00:25:B5:00:0A:05-20:00:00:25:B5:00:0A:08"
                     }
                 },
-                "SSESXc1_fc1b": {
+                "ESX50_fc1b": {
                     "switch_id": "B",
                     "template_type": "updating-template",
                     "vsans": [
                         "VSAN206"
                     ],
                     "wwpnpool": {
-                        "name": "SSESXc1_wwpn_B",
-                        "range": "20:00:00:25:B5:00:2B:01-20:00:00:25:B5:00:2B:FF"
+                        "name": "ESX50_wwpn_B",
+                        "range": "20:00:00:25:B5:00:0B:05-20:00:00:25:B5:00:0B:08"
                     }
                 }
             },
             "vnic": {
-                "SSESXc1_vmnic0": {
+                "ESX50_vmnic0": {
                     "macpool": {
-                        "name": "SSESXc1_vmnic0",
-                        "range": "00:25:B5:00:2A:01-00:25:B5:00:2A:FF"
+                        "name": "ESX50_vmnic0",
+                        "range": "00:25:B5:00:0A:05-00:25:B5:00:0A:08"
                     },
                     "mtu": "1500",
                     "network_policy": "default",
                     "qos_policy": {
-                        "name": "SSESXc1_vmnic0",
+                        "name": "ESX50_vmnic0",
                         "rate": "line-rate"
                     },
                     "switch_id": "A",
                     "template_type": "updating-template",
                     "vlans": [
-                        "QOL_Meditech-PER",
-                        "ESXi700"
+                        "vlan775",
+                        "vlan776"
                     ]
                 },
-                "SSESXc1_vmnic1": {
+                "ESX50_vmnic1": {
                     "macpool": {
-                        "name": "SSESXc1_vmnic1",
-                        "range": "00:25:B5:00:2B:01-00:25:B5:00:2B:FF"
+                        "name": "ESX50_vmnic1",
+                        "range": "00:25:B5:00:0B:05-00:25:B5:00:0B:08"
                     },
                     "mtu": "1500",
                     "network_policy": "default",
                     "qos_policy": {
-                        "name": "SSESXc1_vmnic1",
+                        "name": "ESX50_vmnic1",
                         "rate": "line-rate"
                     },
                     "switch_id": "B",
                     "template_type": "updating-template",
                     "vlans": [
-                        "QOL_Meditech-PER",
-                        "ESXi700"
+                        "vlan775",
+                        "vlan776"
                     ]
                 }
             }
