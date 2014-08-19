@@ -1,0 +1,3 @@
+#TYPE System.Management.Automation.PSCustomObject
+"template"
+"@{name=MTESX55_spt; org=HCA; policies=; pools=; service_profiles=; templates=}"

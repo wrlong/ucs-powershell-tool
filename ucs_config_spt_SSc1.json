@@ -1,0 +1,127 @@
+{
+    "template": {
+        "name": "SSESXc1_spt",
+        "org": "HCA",
+        "policies": {
+            "bios": {
+                "name": "bios_def"
+            },
+            "boot": {
+                "type": "BFS",
+                "name": "SSESXc1_BFS",
+                "paths": {
+                    "vhba_primary": {
+                        "name": "SSESXc1_fc0a",
+                        "target_primary": "50:00:09:73:F0:14:FD:40",
+                        "target_secondary": "50:00:09:73:F0:14:FD:80"
+                    },
+                    "vhba_secondary": {
+                        "name": "SSESXc1_fc1b",
+                        "target_primary": "50:00:09:73:F0:14:FD:8C",
+                        "target_secondary": "50:00:09:73:F0:14:FD:4C"
+                    }
+                }
+            },
+            "firmware": {
+                "name": "SSESXc1_fw_pkg"
+            },
+            "local_disk_config": "default",
+            "maintenance": {
+                "name": "SSESXc1_mnt_pol"
+            },
+            "power_ctrl": "default",
+            "server_pool_qual": {
+                "name": "SSESXc1_svr_qp",
+                "range": {
+                    "chassis": "1,2,3,4",
+                    "slots": "1,2"
+                }
+            }
+        },
+        "pools": {
+            "server": {
+                "name": "SSESXc1_svr_pl",
+                "range": {
+                    "chassis": "3",
+                    "slots": "1,2,3,4"
+                }
+            },
+            "uuid": {
+                "name": "SSESXc1_uuid_pl",
+                "range": "0000-0025B5002001=0000-0025B50020FF"
+            },
+            "wwnn": {
+                "name": "SSESXc1_wwnn_pl",
+                "range": "20:00:00:25:B5:00:20:01-20:00:00:25:B5:00:20:FF"
+            }
+        },
+        "service_profiles": {
+            "instances": "4",
+            "prefix": "SS-ESX-c1-"
+        },
+        "templates": {
+            "vhba": {
+                "SSESXc1_fc0a": {
+                    "switch_id": "A",
+                    "template_type": "updating-template",
+                    "vsans": [
+                        "VSAN106"
+                    ],
+                    "wwpnpool": {
+                        "name": "SSESXc1_wwpn_A",
+                        "range": "20:00:00:25:B5:00:2A:01-20:00:00:25:B5:00:2A:FF"
+                    }
+                },
+                "SSESXc1_fc1b": {
+                    "switch_id": "B",
+                    "template_type": "updating-template",
+                    "vsans": [
+                        "VSAN206"
+                    ],
+                    "wwpnpool": {
+                        "name": "SSESXc1_wwpn_B",
+                        "range": "20:00:00:25:B5:00:2B:01-20:00:00:25:B5:00:2B:FF"
+                    }
+                }
+            },
+            "vnic": {
+                "SSESXc1_vmnic0": {
+                    "macpool": {
+                        "name": "SSESXc1_vmnic0",
+                        "range": "00:25:B5:00:2A:01-00:25:B5:00:2A:FF"
+                    },
+                    "mtu": "1500",
+                    "network_policy": "default",
+                    "qos_policy": {
+                        "name": "SSESXc1_vmnic0",
+                        "rate": "line-rate"
+                    },
+                    "switch_id": "A",
+                    "template_type": "updating-template",
+                    "vlans": [
+                        "QOL_Meditech-PER",
+                        "ESXi700"
+                    ]
+                },
+                "SSESXc1_vmnic1": {
+                    "macpool": {
+                        "name": "SSESXc1_vmnic1",
+                        "range": "00:25:B5:00:2B:01-00:25:B5:00:2B:FF"
+                    },
+                    "mtu": "1500",
+                    "network_policy": "default",
+                    "qos_policy": {
+                        "name": "SSESXc1_vmnic1",
+                        "rate": "line-rate"
+                    },
+                    "switch_id": "B",
+                    "template_type": "updating-template",
+                    "vlans": [
+                        "QOL_Meditech-PER",
+                        "ESXi700"
+                    ]
+                }
+            }
+        }
+    }
+}
